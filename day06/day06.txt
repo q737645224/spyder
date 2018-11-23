@@ -1,0 +1,70 @@
+怎么证明世界上所有的人都是秃子?(数学归纳法)
+    1)有0根头发的人是秃子,有1根的人也是秃子;
+    2)假设有m根头发的人是秃子,可以证明
+有m+1根头发的人也是秃子;
+从而这个世界上所有的人都是秃子;
+
+Fab的递归实现:
+   Fab(n) =  1                n = 1,2
+           Fab(n-1)+Fab(n-2)  n > 2
+
+def Fab(n):
+  assert(n > 0 and type(n) == type(1))
+  if n <= 2:
+     return 1
+  return Fab(n-1)+Fab(n-2)
+
+用递归算法求解一个数组的最大最小值
+比如:
+输入    L = [5, 8, 4, 3, 1, -9]
+输出    (8,-9)
+
+def maxMin(L): 
+   """
+   用递归算法求解一个数组的最大最小值
+   """
+   pass
+
+https://blog.csdn.net/quickzhao3223/article/details/82627296
+
+哈希算法:
+	对一段信息通过一个数学方法打指纹,打完指纹的信息
+得到长度是固定的;
+
+import hashlib
+hashObj = hashlib.sha256()#创建MD5的HASH对象
+sign = "HelloWorld" 
+#把字符串转成bytes,用update进行HASH
+hashObj.update(sign.encode("utf-8"))
+print(hashObj.hexdigest())#打印HASH结果
+# 68e109f0f40ca72a15e05cc22786f8e6
+# 872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4
+
+import hashlib
+hashObj1 = hashlib.sha256()#创建MD5的HASH对象
+sign1 = "HelloWorld1" 
+#把字符串转成bytes,用update进行HASH
+hashObj1.update(sign1.encode("utf-8"))
+print(hashObj1.hexdigest())#打印HASH结果
+# 9ec847db68e6c23d82a26f6793deac93
+# 90b46dd6fad0a8db496945a6be27d95fbb7860482235697056b89b1d0783685e
+
+作业:
+   1)封装两个方法:
+	A.对字符串进行HASH;
+	B.对文件进行HASH;
+   2)有10个球,每个球有两种颜色的选择:黑与白;
+使用递归的方法把这10个球所有的颜色可能性打印出来;
+0000000000
+1000000000
+...
+1111111111
+
+sitemap
+SEO
+
+队列: FIFO(First In First Out) 排队买票
+栈:   FILO(First In Last Out)  电梯
+深度优先遍历,广度优先遍历:
+	深度优先遍历可以使用递归来实现;
+	广度优先遍历可以使用队列来实现;

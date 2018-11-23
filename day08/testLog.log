@@ -1,0 +1,8 @@
+2018-09-19 10:07:01,216 ERROR Test Error log
+2018-09-19 10:07:01,217 INFO Test info log
+2018-09-19 10:09:02,719 ERROR Test Error log
+2018-09-19 10:09:02,720 INFO Test info log
+2018-09-19 10:09:02,720 DEBUG Test debug log
+2018-09-19 10:12:21,197 ERROR Test Error log
+2018-09-19 10:12:21,198 INFO Test info log
+2018-09-19 10:12:21,198 DEBUG Test debug log

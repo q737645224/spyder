@@ -1,0 +1,150 @@
+在一个List中去重最简单的做法:
+L = [1,1,2,3,2,4]
+L = list(set(L)) # 先转成集合,然后转回成list
+#Out[3]: [1, 2, 3, 4]
+
+深度优先遍历:
+class BinTreeNode:
+   def __init__(self):
+      self._data = None
+      self._left = None
+      self._right = Node
+
+def DFS(treeNode):
+"""
+深度优先遍历
+"""
+  if treeNode is Not None:
+    print(treeNode._data)
+    if treeNode._left is not None:
+       DFS(treeNode._left)
+    if treeNode._right is not None:
+       DFS(treeNode._right)
+      
+def BFS(treeNode):
+"""
+广度优先遍历
+"""
+   if treeNode is None:
+     return 
+   queue = []
+   queue.append(treeNode)# 放入第一个节点
+   while queue:
+     curNode = queue.pop(0)
+     print(curNode._data)
+     if curNode._left is not None:
+        queue.append(curNode._left)
+     if curNode._right is not None:
+        queue.append(curNode._left)
+
+	
+面试题:
+    1)百度有3万名员工,请按照年龄给这3万名员工排序;
+这个问题你可以理解为一个简单的排序问题,使用各种排序算法:
+冒泡排序,插入排序,选择排序:O(n^2)
+快速排序,Shell排序,堆排序: O(nlgn)
+
+有没有办法把时间复杂度降到O(n)
+    使用计数的方法就可以达到O(n)
+    我们知道年龄有一个范围: 18-80
+ L[18]  L[19] L[20]... L[80]
+               2
+          1
+
+
+   2)Google公司有两个机房,分别放了N台电脑,
+A机房里的电脑数据在B机房里有一个备份;
+有一天,某个机房的某台机器出了问题,
+怎么快速的把数据恢复过来?
+L1=[1,4,3,2,5]
+L2=[1,4,3,5]
+
+X1+X2+...+Xk+Xk+1...+Xn = Sum
+     Xk = Sum-(X1+X2+...+...+Xn)
+sqrt(X1^2+X2^2...+Xk^2+Xk^2...+Xn^2) = Mul
+
+
+作业:
+    1.用至少3种方法实现将一个list去重的过程;
+https://www.douban.com/doulist/3516235/?start=0&sort=seq&playable=0&sub_type=
+https://www.douban.com/doulist/3516235/?start=0&amp;sort=seq&amp;playable=0&amp;sub_type=
+
+Scrapy Available commands:
+  bench         Run quick benchmark test
+  fetch         Fetch a URL using the Scrapy downloader
+  genspider     Generate new spider using pre-defined templates
+  runspider     Run a self-contained spider (without creating a project)
+  settings      Get settings values
+  shell         Interactive scraping console
+  startproject  Create new project
+  version       Print Scrapy version
+  view          Open URL in browser, as seen by Scrapy
+Scrapy框架:
+   安装:
+      conda install scrapy
+   使用:
+      1.创建项目:
+	scrapy startproject tencentSpider
+      2.进到下一层,创建一个爬虫:
+        cd tencentSpider
+	scrapy genspider tencent hr.tencent.com
+      3.修改程序的逻辑:
+        A.settings.py:
+	  1.设置UA;2.关掉Robots协议;
+	  3.关闭Cookie;4.打开ItemPipelines;
+	确定一下目标:抓取职位名称,详情页,类别;
+	B.items.py: ORM
+	  添加三项数据
+	  positionName,
+	  positionLink,
+	  positionType
+	C.pipelines.py: 保存数据的逻辑
+	  这里直接保存到json文件中
+	D.spiders->tencent.py:主体的逻辑
+	  主体逻辑
+      4.运行爬虫:
+        scrapy crawl tencent
+  
+
+https://hr.tencent.com/position.php?keywords=Python
+
+//*[@id="position"]/div[1]/table/tbody/tr[2]
+//*[@id="position"]/div[1]/table/tbody/tr[2]/td[1]/a
+//*[@id="position"]/div[1]/table/tbody/tr[2]/td[2]
+
+补充说明:
+     1)如何在Scrapy框架中设置代理服务器:
+        可以在Downloadermiddler中
+对process_request进行处理,来完成代理服务器的设置;
+可以将代理服务器的池放在settings.py文件;
+process_request在处理时可以从settings.py中
+	random.choice(proxyList)
+	if proxy["user_passord"] is not None:
+	   proxy["user_passord"]=base64.baseEncode(proxy["user_passord"])
+   注意: 这里的代理服务器如果是私密的,
+有用户名和密码时,需要做一层简单的加密处理Base64;
+     2)在Scrapy生成一个基础爬虫时
+     使用:
+        scrapy genspider tencent hr.tencent.com
+如果想要生成一个高级的爬虫CrawlSpider:
+        scrapy genspider -t crawl tencent2 hr.tencent.com
+CrawlSpider这个爬虫可以更加灵活的提取URL等信息,
+需要你去了解Rule,LinkExtractor;
+
+
+Scrapy-Redis搭建分布式爬虫:
+	Redis是一种内存数据库(提供了接口将数据保存
+磁盘数据库中);
+
+
+
+
+
+
+
+
+
+
+
+作业:
+    1)使用Scrapy框架来完善tencentSpider的实现;
